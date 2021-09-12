@@ -1,0 +1,187 @@
+======================================================================================================================================
+1 Lecture
+======================================================================================================================================
+
+A database is a set of related information
+
+A telephone book : Fields:
+                        Name
+                        Phone Number
+                        Adress
+                        Notes
+
+A telephone book : Disadvantages:
+                                Security
+                                Slow search
+                                Find by adress impossible
+                                Data relevance
+
+Nonrelational Database Systems: Hierarchical Database System(Tree): 
+                                                                Client
+                                                                Accounts
+                                                                Transactions
+                                Network Database System(links)
+
+Nonrelational Database Systems:
+                            Active Directory(Microsoft)
+                            Directory Server(Netscape)
+                            XML (Extensible Markup Language)
+
+Nonrelational Databases - faster than relational
+
+
+The Relational Model:
+    Creator - Dr. E.F.Codd 1970.
+
+Data can be represented as sets of tables.
+Definitions: Entity(Сущность)
+            Primary key(Первичный ключ)
+            Foreign key(Внешний ключ)
+
+SQL - Structured Query Language
+                                                        
+
+======================================================================================================================================
+2 Lecture
+======================================================================================================================================
+
+
+Data Deﬁnition Language - is a standard for commands 
+that deﬁne the diﬀerent structures in a database. 
+
+DDL statements create, modify, and remove database 
+objects such as tables, indexes, and users. 
+
+Common DDL statements are CREATE, ALTER, and DROP
+
+Data types:
+• Numeric types
+    smallint (2 bytes) - small-range integer (-32768 to +32767)
+    integer (4 bytes) - typical choice for integer (-2147483648 to +2147483647)
+    bigint (8 bytes) - large-range integer (-9223372036854775808 to +9223372036854775807)
+
+• Floating-Point types
+    real (4 bytes) - variable-precision, inexact (6 decimal digits precision)
+    double (8 bytes) - variable-precision, inexact (15 decimal digits precision)
+
+•Serial types
+    smallserial (2 bytes) - small autoincrementing integer (1 to 32767)
+    serial (4 bytes) - autoincrementing integer (1 to 2147483647)
+
+• Character types
+    varchar(n) - variable-length string with limit
+    char(n) - ﬁxed-length string, blank padded
+    text - variable unlimited length
+
+• Binary Data types
+    bytea - variable-length binary string (1 or 4 bytes)
+
+• Date/Time types
+    timestamp [ (p) ] [ without time zone ] (8 bytes)- both date and time (no time zone)
+    timestamp [ (p) ] with time zone (8 bytes) - both date and time, with time zone
+    date (4 bytes)- date (no time of day)
+    time [ (p) ] [ without time zone ] (8 bytes)- time of day (no date)
+    time [ (p) ] with time zone (12 bytes) - time of day (no date), with time zone
+    interval [ ﬁelds ] [ (p) ] (16 bytes)- time interval
+
+
+• Boolean types
+    boolean (1 byte)- state of true or false
+
+
+• Arrays
+
+
+======================================================================================================================================
+3 Lecture
+======================================================================================================================================
+
+
+SELECT * FROM my_table; // select everything
+
+DML - stands for Data Manipulation Language (INSERT, UPDATE and DELETE)
+
+INSERT INTO employees (first_name) // insert something
+VALUES('Sasha'),('Egor');
+
+UPDATE films SET kind = 'Dramatic';
+
+UPDATE films SET kind = 'Dramatic' WHERE kind = 'Drama';
+
+
+======================================================================================================================================
+4 Lecture
+======================================================================================================================================
+
+
+SELECT DISTINCT * FROM table_name; - select unique elements
+
+SELECT ALL * FROM table_name; - select all elements
+
+SELECT DISTINCT ON(column name) * FROM table_name; - select unique elements
+
+SELECT count(*) FROM table_name; - return count
+
+SELECT col_name, avg/max/count(col_name2)
+FROM table name
+GROUP BY col_name; - we have grouped our data by col_name and for each group add avg/max/count
+HAVING avg(col_name2)>3; - like WHERE but for groups
+
+SELECT ..... 
+UNION/INTERSECT SELECT ..... - union to union data in one table
+
+EXCEPT - A-B (left part withour right part)
+
+ORDER BY ... DESC/ASC NULLS FIRST/LAST- sorting
+
+LIMIT 5 - selected only first 5
+
+LIMIT 5 OFFSET 3 - avoid first 3, and show next 5 after 3rd
+======================================================================================================================================
+5 Lecture
+======================================================================================================================================
+
+Logical operators:
+AND OR Notes
+
+Comparison operators:
+<, >, >=, <=, =, <> or !=;
+
+Comparison Predicates:
+
+a BETWEEN x AND y - we check if a between x and y x must me < y
+
+BETWEEN SYMMETRIC - auto sort, and checking
+
+SELECT 20 IS DISTICNT FROM 30 - check if 20 not equal 30
+
+SELECT num_nulls| num_nonnulls - select count nulls or not nulls
+
+MATHEMATICAL OPERATORS:
+    ^ - exponentiation, |/ - square root, ||/ cube root, ! factorial, @ - abs, # - xor, 
+
+MATH FUNCTIONS:
+    abs(n) - absolute value;
+    cbrt(n) - cube root
+    div(n) - целая часть от деления
+    mod(5,3) - remainder
+    scale(4.33) - 2 - count precision
+    trunc(4.33) - 4 - takes only integer
+    trunc(4.33,1) - 4.3 - takes integer + n digits after comma
+
+
+STRINGS OPERATORS:
+    || - concatenation
+
+
+IF ELSE CONDITION:
+    SELECT AGE
+        CASE
+            WHEN age > 30 THEN 'Over 30'
+            WHEN age < 30 THEN 'Under 30'
+            ELSE 'Equal 30'
+            END
+    FROM employees;
+
+
+

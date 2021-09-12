@@ -1,0 +1,96 @@
+////////////////////////////////////////////////////////////////////////////////// #1
+
+SQL - database
+
+////////////////////////////////////////////////////////////////////////////////// #2
+
+CREATE DATABASE database_name; - create database
+DROP DATABASE database_name; - delete database
+TYPES - INT, VARCHAR, TEXT, DATE
+CREATE TABLE table_name(id INT NOT NULL AUTO_INCREMENT,
+                        name VARCHAR(30),
+                        email VARCHAR(40),
+                        bio TEXT,
+                        birth DATE,
+                        PRIMARY KEY(id)); - create table
+NOT NULL - can't be empty
+AUTO_INCREMENT - auto increasing values
+PRIMARY KEY - our field will be unique
+DROP TABLE table_name; - delete table
+ALTER TABLE table_name ADD column_name TYPE_OF_DATA(n); - add column in the table
+ALTER TABLE table_name DROP COLUMN column_name; - delete column in the table
+
+////////////////////////////////////////////////////////////////////////////////// #3
+
+INSERT INTO table_name (column_name1,column_name2,....) VALUES('data_of_column1','data_of_column2','...'); - insert data in the table
+
+ALTER TABLE table_name CHANGE column_name column_name TYPE_OF_DATA NOT NULL; - change column in the table to not be NULL
+
+INSERT INTO table_name  (column_name1,column_name2,....) VALUES ('data_of_column1','data_of_column2','...'),
+                                                                ('data_of_column1','data_of_column2','...'),
+                                                                ('data_of_column1','data_of_column2','...'); - insert more than 1 data
+
+UPDATE `people` SET `name` = 'Max', `email` = 'ivan@ivan.ru' WHERE `id` > 3 AND `name` = 'Ivan'; - update table, set something, where something
+
+////////////////////////////////////////////////////////////////////////////////// #4
+
+DELETE FROM table_name WHERE id = 2; -> delete data from table
+DELETE FROM table_name; -> delete all data in the table
+TRUNCATE table_name; -> clear all data in the table
+DROP TABLE table_name; -> delete table
+
+////////////////////////////////////////////////////////////////////////////////// #5
+
+SELECT * FROM `table_name`; - select all from table
+SELECT `name`, `email` FROM `table_name` WHERE id > 2 AND id < 5; - select from table where something
+SELECT * FROM `table_name` WHERE `id` <> 5; - <> not equal
+SELECT * FROM `table_name` WHERE `id` <> 5 OR `bio` IS NULL; - <> not equal - IS or IS NOT for NULL
+SELECT DISTINCT `name` FROM `table_name`; - show unique elements by DISTINCT
+SELECT * FROM `table_name` LIMIT 2; - show only 2 datas by LIMIT
+SELECT * FROM `table_name` LIMIT 2,3; - avoid 2 elements, and show only next 3 elements
+SELECT * FROM `table_name` ORDER BY `id`; - sort by id
+SELECT * FROM `table_name` ORDER BY `id` DESC; - sort by id describes
+SELECT * FROM `table_name` WHERE id BETWEEN 2 AND 6 AND id <> 4; BETWEEN - range from 2 to 6
+SELECT * FROM `table_name` WHERE id IN(4,5,1); select only where id = 4,5,1
+SELECT * FROM `table_name` WHERE name LIKE 'B%'; select names starting from letter B
+SELECT * FROM `table_name` WHERE bio LIKE '%Programmer%'; select where bio contains word Programmer 
+
+WHERE ORDER LIMIT - consistency
+
+////////////////////////////////////////////////////////////////////////////////// #6
+
+CREATE INDEX name_of_index ON table_name(column_name); - create index for column
+DROP INDEX name_of_index ON table_name; - delete index
+
+CREATE TABLE orders(
+    id INT NOT NULL AUTO_INCREMENT,
+    orderNumber INT,
+    shopId INT,
+    personId INT,
+    date_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY(id),
+    FOREIGN KEY(shopId) REFERENCES shop(id), - reference to the another table
+    FOREIGN KEY(personId) REFERENCES people(id)
+);
+
+////////////////////////////////////////////////////////////////////////////////// #7
+
+SELECT orders.orderNumber, people.name, people.email FROM people
+INNER JOIN  orders ON people.id = orders.personId
+ORDER BY orders.orderNumber DESC;
+
+SELECT shop.title, people.name, people.email FROM people
+INNER JOIN  orders ON people.id = orders.personId
+INNER JOIN  shop ON shop.id = orders.shopId
+ORDER BY orders.orderNumber DESC
+
+CREATE DATABASE laboratory_work1;
+
+CREATE TABLE employees(num SERIAL,
+                        first_name VARCHAR(50),
+                        last_name VARCHAR(50),
+                        middle_name VARCHAR(50),
+                        birth_date DATE);
+
+
+       
