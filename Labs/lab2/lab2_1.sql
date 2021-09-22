@@ -1,3 +1,4 @@
+-- 1 EXERCISE
 -- DDL 1
 CREATE TABLE info(
     NAME varchar(25) NOT NULL,
@@ -6,7 +7,7 @@ CREATE TABLE info(
     SEX varchar(6)
 );
 -- DDL 2
-ALTER TABLE info ADD BIRTH_DATE date NOT NULL;
+ALTER TABLE info ADD BIRTH_DATE date;
 
 -- DML 1
 INSERT INTO info VALUES ('Nurassyl', 'Trdln',18,'Male',to_date('21/10/2002','dd/mm/yyyy'));
