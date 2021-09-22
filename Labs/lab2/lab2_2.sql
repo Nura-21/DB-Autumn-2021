@@ -26,5 +26,6 @@ CREATE TABLE order_items(
     order_code INTEGER UNIQUE NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
     FOREIGN KEY (order_code) REFERENCES orders(code) ON DELETE CASCADE,
+    PRIMARY KEY (product_id,order_code),
     quantity INTEGER NOT NULL CHECK(quantity > 0)
 );
