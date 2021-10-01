@@ -17,6 +17,9 @@ WHERE (name LIKE '%a')
    OR (name LIKE '%o')
    OR (name LIKE '%i')
    OR (name LIKE '%u');
+--OR--
+SELECT ID,name FROM student
+WHERE name SIMILAR TO '%[aeuioAEUIO]';
 --G
 SELECT course.course_id, course.title FROM course,prereq
 WHERE course.course_id = prereq.course_id AND prereq.prereq_id = 'CS-101';
@@ -47,7 +50,7 @@ FROM student,takes,course,
      (SELECT COUNT(takes.ID) AS amount,takes.ID AS id  FROM takes,student WHERE takes.ID = student.ID GROUP BY takes.ID) AS temp
 WHERE course.dept_name = 'Comp. Sci.'
           AND takes.course_id = course.course_id
-          AND temp.amount >= 3
+          AND temp.amount > 3
           AND temp.id = student.ID
         GROUP BY student.ID,student.name;
 
@@ -83,30 +86,29 @@ WHERE instructor.ID = advisor.i_ID
 --C
 SELECT course.dept_name FROM course,takes,student
     WHERE takes.ID = student.ID
-      AND takes.grade IN ('A','A+','A-','B','B+','B-',null)
+      AND takes.grade IN ('A','A+','A-','B','B+','B-',null,'C+','C-')
       AND takes.course_id = course.course_id
       GROUP BY course.dept_name
 EXCEPT (SELECT course.dept_name FROM course,student,takes
             WHERE takes.ID = student.ID
-              AND takes.grade IN ('F','C','C+','C-')
+              AND takes.grade IN ('F','C')
               AND takes.course_id = course.course_id
             GROUP BY course.dept_name);
 
 --D
-SELECT instructor.name FROM instructor,takes,course,advisor
-WHERE instructor.dept_name = course.dept_name
-    AND course.course_id = takes.course_id
-    AND advisor.s_ID = takes.ID
+SELECT instructor.name FROM instructor,takes,advisor
+WHERE advisor.s_ID = takes.ID
     AND advisor.i_ID = instructor.ID
-    AND takes.grade NOT IN ('A','A-')
+    AND takes.grade NOT IN ('A')
 GROUP BY instructor.name;
 
 --E
-SELECT course.dept_name FROM course,section,time_slot
-WHERE course.course_id = section.course_id
-    AND section.time_slot_id = time_slot.time_slot_id
-    AND time_slot.start_hr < 13
-GROUP BY course.dept_name;
+SELECT section.course_id FROM section
+WHERE section.time_slot_id NOT IN ('D','F','G');
+--OR--
+SELECT section.course_id FROM section
+    WHERE section.time_slot_id IN (
+        SELECT time_slot_id FROM time_slot WHERE end_hr < 13 OR (end_hr = 13 AND end_min = 0));
 
 
 
