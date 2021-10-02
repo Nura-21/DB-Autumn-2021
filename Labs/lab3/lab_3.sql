@@ -96,9 +96,9 @@ EXCEPT (SELECT course.dept_name FROM course,student,takes
             GROUP BY course.dept_name);
 
 --D
-SELECT instructor.name FROM instructor,takes,advisor
-WHERE advisor.s_ID = takes.ID
-    AND advisor.i_ID = instructor.ID
+SELECT instructor.name FROM instructor, takes,teaches
+WHERE instructor.id = teaches.ID
+    AND teaches.course_id = takes.course_id
     AND takes.grade NOT IN ('A')
 GROUP BY instructor.name;
 
