@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>c4ecdca6-c56f-4e43-883f-f59c94940fd5</OriginalElement>
+  <nodes>
+    <node x="1113.0" y="1747.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.replenishment</node>
+    <node x="1105.5" y="324.0">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.ships</node>
+    <node x="321.0" y="-10.0">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.price</node>
+    <node x="789.0" y="894.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.contracts</node>
+    <node x="316.0" y="218.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product</node>
+    <node x="-0.5" y="240.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.type_cat</node>
+    <node x="1113.5" y="938.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store</node>
+    <node x="1113.0" y="1196.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.request</node>
+    <node x="593.5" y="565.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.sales</node>
+    <node x="613.0" y="790.0">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store_wh</node>
+    <node x="794.0" y="367.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.customer</node>
+    <node x="1434.0" y="389.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.shipper</node>
+    <node x="873.0" y="1510.0">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.wh_info</node>
+    <node x="1120.5" y="1498.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.warehouse</node>
+    <node x="313.5" y="1900.5">c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.manuf_cat</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.request" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="-67.0" y="0.0" />
+      <point x="400.0" y="1280.0" />
+      <point x="20.0" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.contracts" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="-71.0" y="0.0" />
+      <point x="406.6666666666667" y="1000.0" />
+      <point x="26.666666666666686" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.price" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="0.0" y="50.0" />
+      <point x="0.0" y="-61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store_wh" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store" relationship="REFERENCES">
+      <point x="67.0" y="0.0" />
+      <point x="1140.0" y="840.0" />
+      <point x="-40.0" y="-61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.sales" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.customer" relationship="REFERENCES">
+      <point x="0.0" y="-94.5" />
+      <point x="660.0" y="440.0" />
+      <point x="-66.0" y="0.0" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.manuf_cat" relationship="REFERENCES">
+      <point x="0.0" y="61.5" />
+      <point x="0.0" y="-39.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.ships" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="0.0" y="-116.0" />
+      <point x="1180.0" y="280.0" />
+      <point x="64.0" y="0.0" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.ships" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.shipper" relationship="REFERENCES">
+      <point x="74.5" y="0.0" />
+      <point x="-66.0" y="0.0" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.wh_info" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="-67.0" y="0.0" />
+      <point x="393.3333333333333" y="1560.0" />
+      <point x="13.333333333333314" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.request" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.warehouse" relationship="REFERENCES">
+      <point x="0.0" y="83.5" />
+      <point x="0.0" y="-61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.replenishment" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.warehouse" relationship="REFERENCES">
+      <point x="0.0" y="-72.5" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.request" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store" relationship="REFERENCES">
+      <point x="0.0" y="-83.5" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.sales" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store" relationship="REFERENCES">
+      <point x="66.5" y="0.0" />
+      <point x="1160.0" y="660.0" />
+      <point x="-20.0" y="-61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.contracts" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.customer" relationship="REFERENCES">
+      <point x="0.0" y="-105.5" />
+      <point x="0.0" y="72.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.replenishment" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="-67.0" y="0.0" />
+      <point x="386.6666666666667" y="1820.0" />
+      <point x="6.666666666666686" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.wh_info" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.warehouse" relationship="REFERENCES">
+      <point x="67.0" y="0.0" />
+      <point x="-59.5" y="0.0" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store_wh" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="-67.0" y="0.0" />
+      <point x="413.3333333333333" y="840.0" />
+      <point x="33.333333333333314" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.sales" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" relationship="REFERENCES">
+      <point x="-66.5" y="0.0" />
+      <point x="420.0" y="660.0" />
+      <point x="40.0" y="61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.ships" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.customer" relationship="REFERENCES">
+      <point x="-74.5" y="0.0" />
+      <point x="66.0" y="0.0" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.ships" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store" relationship="REFERENCES">
+      <point x="0.0" y="116.0" />
+      <point x="0.0" y="-61.5" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.contracts" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.store" relationship="REFERENCES">
+      <point x="71.0" y="0.0" />
+      <point x="-66.5" y="0.0" />
+    </edge>
+    <edge source="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.product" target="c4ecdca6-c56f-4e43-883f-f59c94940fd5.TABLE:trdln.public.type_cat" relationship="REFERENCES">
+      <point x="-64.0" y="0.0" />
+      <point x="60.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal Groups" zoom="0.5398009950248757" showDependencies="false" x="1007.5309035396347" y="621.0671994800116" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

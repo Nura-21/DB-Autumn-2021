@@ -42,72 +42,24 @@ CREATE INDEX acc_info ON accounts (customer_id, currency);
 CREATE INDEX bal_info ON accounts (currency, balance);
 
 --EX 6
-
-DO $$
-DECLARE bal INTEGER;
-         lim INTEGER;
-        BEGIN;
-        SAVEPOINT s1;
-        UPDATE accounts
-        SET balance = balance - 400
-        WHERE account_id = 'RS88012';
-        UPDATE accounts
-        SET balance = balance + 400
-        WHERE account_id = 'NT10204';
-        SELECT balance INTO bal FROM accounts WHERE account_id = 'RS88012';
-        SELECT accounts.limit INTO lim FROM accounts WHERE account_id = 'RS88012';
-        if bal < lim THEN
-        ROLLBACK TO SAVEPOINT s1;
-            UPDATE transactions SET status = 'rollback' WHERE id = 3;
-        ELSE
-            COMMIT;
-            UPDATE transactions SET status = 'commited' WHERE id = 3;
-        END IF;
-    END;
-$$
---6)
-DO $$
-    DECLARE
-        bal INT;
-        lim INT;
+CREATE PROCEDURE insert_data(amnt INTEGER, trans_id INTEGER, from_acc VARCHAR, to_acc VARCHAR)
+LANGUAGE plpgsql
+AS $$
+    DECLARE lim int;
+            bal int;
     BEGIN
-        INSERT INTO transactions VALUES(4,now(),'RS88012','NT10204',400,'init');
-        UPDATE accounts SET balance=balance-99
-        WHERE account_id='RS88012';
-        UPDATE accounts SET balance=balance+99
-        WHERE account_id='NT10204';
-        SELECT accounts.balance INTO bal FROM accounts WHERE account_id='RS88012';
-        SELECT accounts.limit INTO lim FROM accounts WHERE account_id='RS88012';
-        IF bal < lim THEN
-            UPDATE accounts SET balance=balance+400
-            WHERE account_id='RS88012';
-            UPDATE accounts SET balance=balance-400
-            WHERE account_id='NT10204';
-            UPDATE transactions SET status = 'rollback' WHERE id=4;
+        INSERT INTO transactions VALUES(trans_id,now(),from_acc,to_acc,amnt,'init');
+        SELECT accounts.balance INTO bal FROM accounts WHERE account_id=from_acc;
+        SELECT accounts.limit INTO lim FROM accounts WHERE account_id=from_acc;
+        IF bal < lim or bal < amnt THEN
+            ROLLBACK;
+            INSERT INTO transactions VALUES(trans_id,now(),from_acc,to_acc,amnt,'rollback');
         ELSE
-            UPDATE transactions SET status = 'commit' WHERE id=4;
+            UPDATE accounts SET balance = balance - amnt WHERE account_id=from_acc;
+            UPDATE accounts SET balance = balance + amnt WHERE account_id=to_acc;
+            UPDATE transactions SET status = 'commited' WHERE id = trans_id;
         END IF;
-        COMMIT;
-END$$;
-
-
-
-DO $$
-    DECLARE
-        bal INT;
-        lim INT;
-    BEGIN
-        INSERT INTO transactions VALUES(4,now(),'RS88012','NT10204',400,'init');
-        SELECT accounts.balance INTO bal FROM accounts WHERE account_id='RS88012';
-        SELECT accounts.limit INTO lim FROM accounts WHERE account_id='RS88012';
-        IF bal < lim THEN
-            UPDATE transactions SET status = 'rollback' WHERE id=4;
-        ELSE
-            UPDATE accounts SET balance=balance-400
-            WHERE account_id='RS88012';
-            UPDATE accounts SET balance=balance+400
-            WHERE account_id='NT10204';
-            UPDATE transactions SET status = 'commit' WHERE id=4;
-        END IF;
-        COMMIT;
-END$$;
+    COMMIT;
+    END
+$$;
+CALL insert_data(100, 9, 'RS88012', 'NT10204');
